@@ -65,12 +65,13 @@
 	 
      <target name="CopyingTestParserFiles">
    	  <echo message="Copying Test Parser Files to Directory !"/>
-     <copy todir="cruise.umple.test-parser/src-gen/cruise/umple/testgenerator/" overwrite="true">
-	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testgenerator/" excludes=".git* UmpleTToRubyUnit.java" />
+     <copy todir="cruise.umple.test-parser/src-gen-umple/cruise/umple/testgenerator/" overwrite="true">
+	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testgenerator/"/>
 	 </copy>
-     <copy todir="cruise.umple.test-parser/src-gen/cruise/umple/testparser/" overwrite="true">
-	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testparser/" excludes=".git* UmpleTToRubyUnit.java" />
+     <copy todir="cruise.umple.test-parser/src-gen-umple/cruise/umple/testparser/" overwrite="true">
+	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testparser/"/>
 	 </copy>
+	 <delete dir="cruise.umple.test-parser/src/src-gen/"/>	 
 	 				  
     </target>
 	

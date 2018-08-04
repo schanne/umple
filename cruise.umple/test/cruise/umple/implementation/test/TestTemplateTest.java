@@ -57,6 +57,7 @@ public class TestTemplateTest extends ClassTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/test/MultipleMethodComments_ModelTest.umpt");
 	    SampleFileWriter.destroy(pathToInput + "/test/StudentTest.umpt");
 	    SampleFileWriter.destroy(pathToInput + "/test/TokenTest.umpt");
+	    SampleFileWriter.destroy(pathToInput + "/test/FooTest.umpt");
 	    
 	    
 	    
