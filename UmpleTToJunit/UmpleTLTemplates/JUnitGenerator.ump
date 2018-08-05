@@ -18,6 +18,7 @@ class JUnitGenerator {
     depend cruise.umple.util.*;
     depend java.util.*;
 	depend cruise.umple.testgenerator.*;
+	depend cruise.umple.testgenerator.Comment;
 	depend cruise.umple.testgenerator.Action;
 
     isA ILang;
@@ -59,7 +60,25 @@ class JUnitGenerator {
 
 
 
-<<#// if (uClass.numberOfComments() > 0) { if(!uClass.getComments().get(0).getIsInline()) {append(realSb, "\n{0}", Comment.format("Multiline",uClass.getComments()));} else { append(realSb, "\n{0}", Comment.format("Multiline",uClass.getComments()));} } #>>
+<<# if (model.numberOfComments() > 0) {
+    	 
+    	 for (Comment ct : model.getComments())
+    	 {
+    	 if(!ct.getIsInline())
+    	 {
+    		 append(realSb, "\n{0}", Comment.format("Multiline",model.getComments(), false));
+    		 
+    	 }
+    	 
+    	 
+    	 else { 
+    		 append(realSb, "\n{0}", Comment.format("Inline",model.getComments(), true));
+    		 }
+    	 
+    	 }
+    	 
+     
+     }#>>
 
 import org.junit.*;
 

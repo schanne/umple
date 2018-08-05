@@ -1,0 +1,171 @@
+
+//generate Java "cruise.umple.testgenerator";
+//namespace cruise.umple.testgenerator;
+namespace cruise.umple.testgenerator;
+
+class Comment{
+
+
+public static  String format(String type, List<Comment> allComments, boolean allowAnnotations){
+	    //String commentDelimiter = type == "Hash" ? "# " : (type == "Javadoc") ? " * " : (type == "Attribute Javadoc") ? "   * " : (type == "Association Javadoc") ? "   * " : (type == "Method Javadoc") ? "   * " : (type == "RubyMultiline") ? "  " : (type == "Multiline") ? "" : "// ";
+
+	    String commentDelimiter;
+	    List<String> deferredAnnotations = new ArrayList<String>();
+
+	    // Set the comment delimiter based on the type of the comment. (ex. For Javadoc prepend "*" before every comment line)
+	    if (type == "Hash")
+	    {
+	      commentDelimiter = "# ";
+	    }
+	    else if (type == "Javadoc")
+	    {
+	      commentDelimiter = " * ";
+	    }
+	    else if (type == "Attribute Javadoc")
+	    {
+	      commentDelimiter = "   * ";
+	    }
+	    else if (type == "Association Javadoc")
+	    {
+	      commentDelimiter = "   * ";
+	    }
+	    else if (type == "Method Javadoc")
+	    {
+	      commentDelimiter = "   * ";
+	    }
+	    else if (type == "RubyMultiline")
+	    {
+	      commentDelimiter = " ";
+	    }
+	    else if (type == "RubyMultiline Internal")
+	    {
+	      commentDelimiter = " ";
+	    }
+	    else if (type == "Multiline")
+	    {
+	      commentDelimiter = "";
+	    }
+	    else
+	    {
+	      commentDelimiter = "// ";
+	    }
+
+	    if (allComments.size() == 0)
+	    {
+	      return null;
+	    }
+
+	    String output = "";
+	    Boolean foundComment = false;
+
+	    for (Comment c : allComments)
+	    {
+	      boolean couldTreatAsAnnotation = allowAnnotations;
+	      
+	      if (type == "RubyMultiline" || type == "RubyMultiline Internal") {
+	        couldTreatAsAnnotation = false;
+	      }
+	      
+	      if (type == "Javadoc" || type == "Attribute Javadoc" || type == "Association Javadoc" || type == "Method Javadoc" || type == "RubyMultiline" || type == "RubyMultiline Internal")
+	      {
+	        int startIndex = 0;
+
+	        // Go through each letter of the current comment to find start of content.
+	        for (int i = 0; i < c.getText().length(); i++)
+	        {
+	          char letter = c.getText().charAt(i);
+
+	          // Remove these letters until the actual content is found in the line.
+	          if (letter == ' ' || letter == '\t' || letter == '*')
+	          {
+	            startIndex++;
+	          }
+	          // Comment content found, set comment to start here.
+	          else
+	          {
+	            c.setText(c.getText().substring(startIndex));
+	            break;
+	          }
+	        }
+
+	        // Special case where the comment line had no content (only spaces, tabs or asterisks).
+	        if (startIndex == c.getText().length())
+	        {
+	          c.setText(c.getText().substring(startIndex));
+	        }
+	      }
+	      
+	      // If it is an annotation, add at end
+	      
+	        foundComment = true;
+	        output += commentDelimiter + c.getText() + "\n";	      
+	    }
+
+	    // Finalize the comment based on what type it was. (ex. For Javadoc place the "/**" and "*/" around the comment)
+	    if(foundComment) {
+	      if (type == "Javadoc")
+	      {
+	        output = "/**\n" + output + " */";
+	      }
+	      else if (type == "Attribute Javadoc")
+	      {
+	        output = "  /**\n" + output + "   */";
+	      }
+	      else if (type == "Association Javadoc")
+	      {
+	        output = "  /**\n" + output + "   */";
+	      }
+	      else if (type == "Method Javadoc")
+	      {
+	        output = "  /**\n" + output + "   */";
+	      }
+	      else if (type == "RubyMultiline")
+	      {
+	        // initialize sb at least as large as the output with 1 comment
+	        StringBuilder sb = new StringBuilder( output.length() + 2 ); 
+	        sb.append("#");
+	        char c;
+	        for( int i=0; i < output.length(); ++i ){
+	          c = output.charAt(i);
+	          sb.append(c);
+	          if( (c == '\n') && (i != output.length()-1) ){
+	            sb.append("#");
+	          }
+	        }
+	        output = sb.toString();
+	      }
+	      else if (type == "RubyMultiline Internal")
+	      {
+	        // initialize sb at least as large as the output with 1 comment
+	        StringBuilder sb = new StringBuilder( output.length() + 2 ); 
+	        sb.append("#");
+	        char c;
+	        for( int i=0; i < output.length(); ++i ){
+	          c = output.charAt(i);
+	          sb.append(c);
+	          if( (c == '\n') && (i != output.length()-1) ){
+	            sb.append("  #");
+	          }
+	        }
+	        output = sb.toString();
+	      }
+	      else if (type == "Multiline")
+	      {
+	        output = "/*\n" + output + "*/";
+	      }
+	    }
+	    
+	    // Process all deferred annotations if any
+	    boolean firstAnnotation = true;
+	    for (String d: deferredAnnotations) {
+	      if(firstAnnotation) {
+	        output = output + "\n";
+	        firstAnnotation = false;
+	      }
+	      output = output + "  "+ d + "\n";
+	    }
+
+	    return output.trim();
+	  }
+ 
+}

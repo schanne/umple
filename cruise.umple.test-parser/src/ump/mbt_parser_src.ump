@@ -50,6 +50,17 @@ public void analyzeAllTokens(Token rootToken){
 	    		 analyzeDepend(t,analysisStep);
 	    	 }
 	    	 
+	    	 if(t.getName().equals("multilineComment"))
+	    	 {
+	    		 analyzeMultilineComment(t,analysisStep);
+	    	 }
+	    	 
+	    	 if(t.getName().equals("inlineComment"))
+	    	 {
+	    		 analyzeInlineComment(t,analysisStep);
+	    	 }
+	    	 
+	    	 
 	    	 
 	    	 if(t.getName().equals("model"))
 	    	 {
@@ -103,6 +114,21 @@ public void analyzeAllTokens(Token rootToken){
 		System.out.println(locOrder);
 	  locOrder++;
 }
+
+  private void analyzeInlineComment(Token t, int analysisStep) {
+	
+	  Comment aComment = new Comment(t.getValue("inlineComment"), "inlineComment", true, locOrder);
+	  aTestModel.addComment(aComment);
+	
+}
+  
+  private void analyzeMultilineComment(Token t, int analysisStep) {
+		
+	  Comment aComment = new Comment(t.getValue("multilineComment"), "multilineComment", false, locOrder);
+	  aTestModel.addComment(aComment);
+	
+}
+
   private String analyzeAssertEqualCode(Token t, int analysisStep)
   {
 	  String assertCode="";

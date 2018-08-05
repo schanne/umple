@@ -6,7 +6,9 @@
   <!-- ```````````````````````````
     Environment Variables
   ``````````````````````````` -->
-		
+  <path id="testparser.project.classpath">
+    <pathelement location="cruise.umple.test-parser/bin"/>
+  </path>	
 			  
 
   <!-- ``````````````````````
@@ -66,22 +68,45 @@
      <target name="CopyingTestParserFiles">
    	  <echo message="Copying Test Parser Files to Directory !"/>
      <copy todir="cruise.umple.test-parser/src-gen-umple/cruise/umple/testgenerator/" overwrite="true">
-	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testgenerator/"/>
+	  <fileset dir="cruise.umple.test-parser/src/src-gen-umple/cruise/umple/testgenerator/"/>
 	 </copy>
      <copy todir="cruise.umple.test-parser/src-gen-umple/cruise/umple/testparser/" overwrite="true">
-	  <fileset dir="cruise.umple.test-parser/src/src-gen/cruise/umple/testparser/"/>
+	  <fileset dir="cruise.umple.test-parser/src/src-gen-umple/cruise/umple/testparser/"/>
 	 </copy>
-	 <delete dir="cruise.umple.test-parser/src/src-gen/"/>	 
+	 <delete dir="cruise.umple.test-parser/src/src-gen/"/>
+	 <delete dir="cruise.umple.test-parser/src-gen/"/>	 
 	 				  
     </target>
 	
 	
     <target name="testXUnitTemplateTest">
       <echo message="Running JUnitTemplate Test"/>
-	    
+	</target>
+	
+	
+	  <!-- ```````````````````````````
+	    Compile the application
+	  ``````````````````````````` -->
+
+	  <target name="CompileTestParser">
+	    <echo message="${ant.project.name}: ${ant.file}"/>
+		
+	    <javac debug="true" includeantruntime="false" debuglevel="source,lines,vars" destdir="cruise.umple.test-parser/bin" source="1.8" target="1.8">
+	      <src path="cruise.umple.test-parser//src-gen-umpletl"/>
+	      <src path="cruise.umple.test-parser//src-gen-umple"/>
+	      <src path="cruise.umple.test-parser//test"/>
+	      <exclude name="**/.git"/>
+	      <exclude name="**/*.ump" />
+	      <exclude name="**/data" />
+	      <classpath refid="testparser.project.classpath"/>
+		    <!-- Add compiler arguments here, see https://ant.apache.org/manual/using.html#arg for details, example below
+				  <compilerarg value="-Xlint:deprecation" />
+			-->
+	    </javac>
+	</target>
 		
 	  
-  </target>
+
 			 
 		     <!-- 
 		       Build
@@ -96,8 +121,11 @@
 				   <antcall target="CompilingUmpleTestParser" />
    				   <antcall target="CopyingTestParserFiles" />
 				   <antcall target="testXUnitTemplateTest" />
+			   		
 				   
      </target>
+	 
+	 
 	 
      
   

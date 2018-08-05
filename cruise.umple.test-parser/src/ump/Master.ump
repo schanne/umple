@@ -1,9 +1,10 @@
-generate Java "../src-gen";
+generate Java "../src-gen-umple";
 
 
 namespace cruise.umple.testgenerator;
 
 use TestCaseTemplate_model.ump;
+use TestCaseTemplate_commentCode.ump;
 use TestCaseTemplate_JUnitGenerator.ump;
 use TestCaseTemplate_PhpUnitGenerator.ump;
 use TestCaseTemplate_RubyUnitGenerator.ump;
