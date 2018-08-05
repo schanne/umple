@@ -1,0 +1,28 @@
+
+
+
+test TestcaseInlineBetweenComments {
+	
+	
+	
+	generate PhpUnit;
+	
+	depend Person;
+	
+	GIVEN:
+	 testGenerator_junit_depend.ump;
+	WHEN:
+	 Person p1 ("John", 123) ;
+	THEN:
+	
+	test someTest {	
+	 
+	 //some inline comment
+	 Person p1 ("John", "123","someAddrss" );
+	 //some in between comment 
+	 assertTrue(p1.getId() != null);
+	 /* multi in between */
+	 assertTrue(p1.getId() != null); 
+	 
+	 }
+}

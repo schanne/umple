@@ -4,46 +4,47 @@
 
 
 
-import org.junit.*;
+<?php
 
 ////---- Tests for  TestcaseInlineBetweenComments.ump----/////
 
 
 
-public class TestcaseInlineBetweenCommentsTest {
+class TestcaseInlineBetweenCommentsTest extends UnitTestCase{
  
  
  
 
-  @Before
-  public void setup(){
+
+  public function setup(){
 
   }
 
 
  
 
-  @After
-  public void teardown(){
+
+  public function teardown(){
 
 
   }
 
 
  
-  @Test
-  public void someTest()
+  public function someTest()
   {
 	    //some inline comment            
-            Person p1 = new Person ("John","123","someAddrss");
+            $p1 = new Person ("John","123","someAddrss");
 	    //some in between comment     
-            Assert.assertTrue (p1.getId()!=null);
+            $this->assertTrue($p1->getId()!=null);
     
 
 	    /*multi in between*/     
-            Assert.assertTrue (p1.getId()!=null);
+            $this->assertTrue($p1->getId()!=null);
     
-  }  
+
+  }
+  
   
  
  

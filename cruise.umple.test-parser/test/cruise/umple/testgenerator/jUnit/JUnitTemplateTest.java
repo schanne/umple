@@ -45,6 +45,7 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/junit/MultilineCommentsTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseMultilineCommentsTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseInlineCommentsTest.java");
+	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseInlineBetweenCommentsTest.java");
 	    
 	  }
 	  

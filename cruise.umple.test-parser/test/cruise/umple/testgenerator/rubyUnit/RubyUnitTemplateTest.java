@@ -38,6 +38,11 @@ public class RubyUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/SubOptionTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/AssertionTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/InLineCommentsTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/MultilineCommentsTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseMultilineCommentsTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseInlineCommentsTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseInlineBetweenCommentsTest.rb");
 	    //SampleFileWriter.destroy(pathToInput + "/test/Test.umpt");
 	    //SampleFileWriter.destroy(pathToInput + "/test/test");
 	    //SampleFileWriter.destroy(pathToInput + "/junit/DependTest.java");
@@ -94,6 +99,62 @@ public class RubyUnitTemplateTest extends UnitTemplateTest{
 	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/TestcaseTest.rb");
 	    Assert.assertEquals(true, (new File(pathToInput + "/RubyUnit/TestcaseTest.rb")).exists());
 	  }
+	  
+	  @Test 
+	  public void inLineComments()
+	  {
+	    language = "rubyunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyunit_inlineComments.umpt");
+	    //assertUmpleTemplateFor("rubyunit/testGenerate_model.umpt","rubyunit/Testgenerate_model.rb");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/InlineCommentsTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/InlineCommentsTest.rb")).exists());
+	  }
+	  
+	  @Test 
+	  public void multilineComments()
+	  {
+	    language = "rubyunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyunit_multilineComments.umpt");
+	    //assertUmpleTemplateFor("rubyunit/testGenerate_model.umpt","rubyunit/Testgenerate_model.rb");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/MultilineCommentsTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/MultilineCommentsTest.rb")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseMultilineComments()
+	  {
+	    language = "rubyunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyunit_testcase_multilineComments.umpt");
+	    //assertUmpleTemplateFor("rubyunit/testGenerate_model.umpt","rubyunit/Testgenerate_model.rb");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/TestcaseMultilineCommentsTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/TestcaseMultilineCommentsTest.rb")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseInlineComments()
+	  {
+	    language = "rubyunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyunit_testcase_inlineComments.umpt");
+	    //assertUmpleTemplateFor("rubyunit/testGenerate_model.umpt","rubyunit/Testgenerate_model.rb");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/TestcaseInlineCommentsTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/TestcaseInlineCommentsTest.rb")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseInlineBetweenComments()
+	  {
+	    language = "rubyunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyunit_testcase_inlineCommentsBetween.umpt");
+	    //assertUmpleTemplateFor("rubyunit/testGenerate_model.umpt","rubyunit/Testgenerate_model.rb");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/TestcaseInlineBetweenCommentsTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/TestcaseInlineBetweenCommentsTest.rb")).exists());
+	  }
+	  
 	  
 	  @Test 
 	  public void testCase_assertion()

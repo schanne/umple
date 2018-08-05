@@ -32,6 +32,29 @@ for (TestCase tc : model.getTestSuite(0).getTestcases())
 			  }
 		  }//initEnd
 		  
+		  if (tc.numberOfComments() > 0) {
+    	 
+    	 for (Comment ct : tc.getComments())
+    	 {
+	    	 if (ct.getLocOrder() ==i)
+	    	 {
+		    	 if(!ct.getIsInline())
+		    	 {
+		    		 append(realSb, "\n\t    #{0}#/", ct.getText());
+		    		 
+		    	 }
+		    	 
+		    	 
+		    	 else { 
+		    		 append(realSb, "\n\t    #{0}", ct.getText());
+		    		 }
+	    	  }
+    	 
+    	 }
+    	 
+     
+     }
+		  
 		  if (tc.hasActions())
 		  {
 	  		for ( Action act : tc.getActions())

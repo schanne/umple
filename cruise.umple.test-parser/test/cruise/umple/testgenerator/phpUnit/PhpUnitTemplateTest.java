@@ -38,6 +38,11 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/SubOptionTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/AssertionTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/InLineCommentsTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/MultilineCommentsTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseMultilineCommentsTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseInlineCommentsTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseInlineBetweenCommentsTest.php");
 	    //SampleFileWriter.destroy(pathToInput + "/test/Test.umpt");
 	    //SampleFileWriter.destroy(pathToInput + "/test/test");
 	    //SampleFileWriter.destroy(pathToInput + "/phpunit/DependTest.java");
@@ -96,12 +101,67 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	  }
 	  
 	  @Test 
+	  public void inLineComments()
+	  {
+	    language = "phpunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_inlineComments.umpt");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/InlineCommentsTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/InlineCommentsTest.php")).exists());
+	  }
+	  
+	  @Test 
+	  public void multilineComments()
+	  {
+	    language = "phpunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_multilineComments.umpt");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/MultilineCommentsTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/MultilineCommentsTest.php")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseMultilineComments()
+	  {
+	    language = "phpunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_testcase_multilineComments.umpt");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/TestcaseMultilineCommentsTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/TestcaseMultilineCommentsTest.php")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseInlineComments()
+	  {
+	    language = "phpunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_testcase_inlineComments.umpt");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/TestcaseInlineCommentsTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/TestcaseInlineCommentsTest.php")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseInlineBetweenComments()
+	  {
+	    language = "phpunit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_testcase_inlineCommentsBetween.umpt");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/TestcaseInlineBetweenCommentsTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/TestcaseInlineBetweenCommentsTest.php")).exists());
+	  }
+	  
+	  @Test 
 	  public void testCase_assertion()
 	  {
 	    language = "phpunit";
 	    //System.out.println(languagePath);
 	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_testcase_assertion.umpt");
-	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.java");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
 	    assertGeneratedCodeEquals(pathToInput, "/phpunit/AssertionTest.php");
 	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/AssertionTest.php")).exists());
 	  }
@@ -112,7 +172,7 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    language = "phpunit";
 	    //System.out.println(languagePath);
 	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_depend.umpt");
-	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.java");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
 	    //assertGeneratedCodeEquals(pathToInput, "/phpunit/GenerateTest.php");
 	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/DependTest.php")).exists());
 	  }
@@ -123,7 +183,7 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    language = "phpunit";
 	    //System.out.println(languagePath);
 	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_depend.umpt");
-	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.java");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
 	    //assertGeneratedCodeEquals(pathToInput, "/phpunit/GenerateTest.php");
 	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/DependTest.php")).exists());
 	  }
@@ -134,7 +194,7 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    language = "phpunit";
 	    //System.out.println(languagePath);
 	    createUmpleTestSystem(languagePath, "/testGenerator_phpunit_depend.umpt");
-	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.java");
+	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.php");
 	    //assertGeneratedCodeEquals(pathToInput, "/phpunit/GenerateTest.php");
 	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/DependTest.php")).exists());
 	  }
