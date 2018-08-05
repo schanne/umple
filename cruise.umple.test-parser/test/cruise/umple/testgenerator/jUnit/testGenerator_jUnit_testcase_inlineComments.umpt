@@ -18,10 +18,8 @@ test TestcaseInlineComments {
 	test someTest {	
 	 
 	 //some inline comment
-	 
-	 Person p1 ("John", "123","someAddrss" );
-	 
-	 assertTrue(p1.getId() != null);	 
+	 Person p1 ("John", "123","someAddrss" );	  
+	 assertTrue(p1.getId() != null);	 		 
 	 
 	 }
 }

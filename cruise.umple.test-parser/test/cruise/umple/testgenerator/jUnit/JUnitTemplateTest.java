@@ -120,6 +120,16 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    Assert.assertEquals(true, (new File(pathToInput + "/junit/TestcaseInlineCommentsTest.java")).exists());
 	  }
 	  
+	  @Test 
+	  public void testcaseInlineBetweenComments()
+	  {
+	    language = "JUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_jUnit_testcase_inlineCommentsBetween.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/junit/TestcaseInlineBetweenCommentsTest.java");
+	    Assert.assertEquals(true, (new File(pathToInput + "/junit/TestcaseInlineBetweenCommentsTest.java")).exists());
+	  }
 	  
 	  
 	  @Test 
