@@ -43,6 +43,8 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/junit/AssertionTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/InLineCommentsTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/MultilineCommentsTest.java");
+	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseMultilineCommentsTest.java");
+	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseInlineCommentsTest.java");
 	    
 	  }
 	  
@@ -95,6 +97,30 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    assertGeneratedCodeEquals(pathToInput, "/junit/MultilineCommentsTest.java");
 	    Assert.assertEquals(true, (new File(pathToInput + "/junit/MultilineCommentsTest.java")).exists());
 	  }
+	  
+	  @Test 
+	  public void testcaseMultilineComments()
+	  {
+	    language = "JUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_jUnit_testcase_multilineComments.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/junit/TestcaseMultilineCommentsTest.java");
+	    Assert.assertEquals(true, (new File(pathToInput + "/junit/TestcaseMultilineCommentsTest.java")).exists());
+	  }
+	  
+	  @Test 
+	  public void testcaseInlineComments()
+	  {
+	    language = "JUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_jUnit_testcase_inlineComments.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/junit/TestcaseInlineCommentsTest.java");
+	    Assert.assertEquals(true, (new File(pathToInput + "/junit/TestcaseInlineCommentsTest.java")).exists());
+	  }
+	  
+	  
 	  
 	  @Test 
 	  public void subOption()

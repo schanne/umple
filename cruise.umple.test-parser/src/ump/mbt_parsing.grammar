@@ -21,7 +21,7 @@ thenCont: THEN: [[testCase]]*
 
 
 
-testCase: test [~testCaseName] {( [[initialization]] | [[methodCall]] | [[assertions]] | [[comment]])* }
+testCase: test [~testCaseName] { (  [[comment]] | ( [[initialization]] | [[methodCall]] | [[assertions]]) )* }
 givenUmpleModel: [~modelName].ump;
 initialization: [~identifier] [~name] [[parameter]]*;
 construct: OPEN_ROUND_BRACKET ([**value] | "[**value]") (,([**value] | "[**value]"))* CLOSE_ROUND_BRACKET

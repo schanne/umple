@@ -115,6 +115,17 @@ public void analyzeAllTokens(Token rootToken){
 	  locOrder++;
 }
 
+  private void analyzeTestCaseInlineComment(Token t, int analysisStep, TestCase aTestCase, int aLocOrder) {
+	  Comment ct = new Comment(t.getValue("inlineComment"), "inlineComment", true, aLocOrder);
+		aTestCase.addComment(ct);
+	
+}
+
+private void analyzeTestCaseMultilineComment(Token t, int analysisStep, TestCase aTestCase, int aLocOrder) {
+	Comment ct = new Comment(t.getValue("multilineComment"), "multilineComment", false, aLocOrder);
+	aTestCase.addComment(ct);
+}
+
   private void analyzeInlineComment(Token t, int analysisStep) {
 	
 	  Comment aComment = new Comment(t.getValue("inlineComment"), "inlineComment", true, locOrder);
@@ -486,6 +497,21 @@ for ( Token st : t.getSubTokens())
 		System.out.println("\tInitlocOrder");
 		System.out.println(locOrder);
 		analyzeInit(st,analysisStep, aTestCase, locOrder);
+		locOrder++;
+	 }
+	 
+	 if(st.getName().equals("multilineComment"))
+	 {
+		//System.out.println("\tInitlocOrder");
+		//System.out.println(locOrder);
+		analyzeTestCaseMultilineComment(st,analysisStep, aTestCase, locOrder);
+		locOrder++;
+	 }
+	if(st.getName().equals("inlineComment"))
+	 {
+		//System.out.println("\tInitlocOrder");
+		//System.out.println(locOrder);
+		analyzeTestCaseInlineComment(st,analysisStep, aTestCase, locOrder);
 		locOrder++;
 	 }
 	

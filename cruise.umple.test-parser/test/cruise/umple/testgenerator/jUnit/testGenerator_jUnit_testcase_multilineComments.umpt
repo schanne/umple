@@ -1,0 +1,27 @@
+
+
+
+test TestcaseMultilineComments {
+	
+	
+	
+	generate JUnit;
+	
+	depend Person;
+	
+	GIVEN:
+	 testGenerator_junit_depend.ump;
+	WHEN:
+	 Person p1 ("John", 123) ;
+	THEN:
+	
+	test someTest {	
+	 
+	 /* some comment */
+	 
+	 Person p1 ("John", "123","someAddrss" );
+	 
+	 assertTrue(p1.getId() != null);	 
+	 
+	 }
+}
