@@ -38,6 +38,7 @@ public class RubyUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/SubOptionTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/AssertionTest.rb");
+	    SampleFileWriter.destroy(pathToInput + "/rubyunit/ActionTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/InLineCommentsTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/MultilineCommentsTest.rb");
 	    SampleFileWriter.destroy(pathToInput + "/rubyunit/TestcaseMultilineCommentsTest.rb");
@@ -87,6 +88,17 @@ public class RubyUnitTemplateTest extends UnitTemplateTest{
 	    //assertUmpleTemplateFor("RubyUnit/testGenerate_model.umpt","RubyUnit/Testgenerate_model.rb");
 	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/SubOptionTest.rb");
 	    Assert.assertEquals(true, (new File(pathToInput + "/RubyUnit/SubOptionTest.rb")).exists());
+	  }
+	  
+	  @Test 
+	  public void action()
+	  {
+	    language = "RubyUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_rubyUnit_testcase_action.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/rubyunit/ActionTest.rb");
+	    Assert.assertEquals(true, (new File(pathToInput + "/rubyunit/ActionTest.rb")).exists());
 	  }
 	  
 	  @Test 

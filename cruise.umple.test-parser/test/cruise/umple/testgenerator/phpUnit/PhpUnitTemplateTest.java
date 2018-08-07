@@ -38,6 +38,7 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/SubOptionTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/AssertionTest.php");
+	    SampleFileWriter.destroy(pathToInput + "/phpunit/ActionTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/InLineCommentsTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/MultilineCommentsTest.php");
 	    SampleFileWriter.destroy(pathToInput + "/phpunit/TestcaseMultilineCommentsTest.php");
@@ -87,6 +88,17 @@ public class PhpUnitTemplateTest extends UnitTemplateTest{
 	    //assertUmpleTemplateFor("phpunit/testGenerate_model.umpt","phpunit/Testgenerate_model.java");
 	    assertGeneratedCodeEquals(pathToInput, "/phpunit/SubOptionTest.php");
 	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/SubOptionTest.php")).exists());
+	  }
+	  
+	  @Test 
+	  public void action()
+	  {
+	    language = "JUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_phpUnit_testcase_action.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/phpunit/ActionTest.php");
+	    Assert.assertEquals(true, (new File(pathToInput + "/phpunit/ActionTest.php")).exists());
 	  }
 	  
 	  @Test 

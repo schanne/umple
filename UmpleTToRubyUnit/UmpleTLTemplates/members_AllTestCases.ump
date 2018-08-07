@@ -62,7 +62,7 @@ for (TestCase tc : model.getTestSuite(0).getTestcases())
 				if (act.getLocOrder() == i)
 				{
 					#>>
-					  <<=act.getCode()>><<#
+					  <<=act.getCode().replace(";","")>><<#
 				}
 				
 			}

@@ -1,6 +1,6 @@
 test Testcase {
 
-	generate JUnit;
+	generate PhpUnit;
 	
 	depend Person;
 	

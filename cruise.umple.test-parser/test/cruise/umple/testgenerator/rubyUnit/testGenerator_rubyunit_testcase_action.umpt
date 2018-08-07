@@ -1,0 +1,19 @@
+test Action {
+
+	generate RubyUnit;
+
+	depend Person;
+
+	GIVEN:
+	 testGenerator_junit_testcase_action.ump;
+	WHEN:
+	 Person p1 ("John", 123) ;
+	THEN:
+
+	test someTest {
+	 Person p1 ("John", "123","someAddrss" );
+	 p1.setName("Jane");
+	 p1.setId(321);
+	 assertTrue(p1.getId() != null);
+	 }
+}

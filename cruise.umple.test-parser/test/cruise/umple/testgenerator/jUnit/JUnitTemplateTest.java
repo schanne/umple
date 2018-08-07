@@ -46,6 +46,7 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseMultilineCommentsTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseInlineCommentsTest.java");
 	    SampleFileWriter.destroy(pathToInput + "/junit/TestcaseInlineBetweenCommentsTest.java");
+	    SampleFileWriter.destroy(pathToInput + "/junit/ActionTest.java");
 	    
 	  }
 	  
@@ -75,6 +76,17 @@ public class JUnitTemplateTest extends UnitTemplateTest{
 	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
 	    assertGeneratedCodeEquals(pathToInput, "/junit/DependTest.java");
 	    Assert.assertEquals(true, (new File(pathToInput + "/junit/DependTest.java")).exists());
+	  }
+	  
+	  @Test 
+	  public void action()
+	  {
+	    language = "JUnit";
+	    //System.out.println(languagePath);
+	    createUmpleTestSystem(languagePath, "/testGenerator_jUnit_testcase_action.umpt");
+	    //assertUmpleTemplateFor("junit/testGenerate_model.umpt","junit/Testgenerate_model.java");
+	    assertGeneratedCodeEquals(pathToInput, "/junit/ActionTest.java");
+	    Assert.assertEquals(true, (new File(pathToInput + "/junit/ActionTest.java")).exists());
 	  }
 	  
 	  @Test 
